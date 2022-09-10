@@ -1,6 +1,7 @@
 #include "SFML/Graphics.hpp"
 #include "map/map.hpp"
 #include "config.hpp"
+#include "images/animated_image.hpp"
 
 
 int main() {
@@ -18,6 +19,7 @@ int main() {
     window.setIcon(icon.getSize().x, icon.getSize().y, icon.getPixelsPtr());
 
     Map map { "map" };
+    AnimatedImage player { "pacman/walk/walk_right", 32 };
 
     while (window.isOpen()) {
         sf::Event event {};
@@ -27,8 +29,12 @@ int main() {
                 window.close();
         }
 
+        player.updateFrame();
+
         window.clear();
         map.display(window);
+        player.setPosition(Vector2(100));
+        player.display(window);
         window.display();
     }
 

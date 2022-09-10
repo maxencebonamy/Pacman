@@ -106,7 +106,7 @@ void Map::_loadImages() {
     for (const auto& line : _stringMap) {
         for (const auto& element : line) {
             if (std::find(_names.begin(), _names.end(), element) == _names.end()) {
-                _images.insert({ element, Image(element, _cellSize) });
+                _images.insert({ element, Image("map/" + element, _cellSize) });
                 _names.emplace_back(element);
             }
         }

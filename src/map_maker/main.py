@@ -12,7 +12,7 @@ selected_tile = 0
 pygame.init()
 
 menu = Menu((GRID_SIZE.x + 1) * CELL_SIZE)
-grid_map = Map(menu.images, "void", "MAP")
+grid_map = Map(menu.images, "void")
 window_size = Vector2(GRID_SIZE.x + menu.size.x + 1, GRID_SIZE.y) * CELL_SIZE
 window = pygame.display.set_mode(window_size)
 pygame.display.set_caption("Pacman Map Maker")
@@ -29,7 +29,7 @@ while True:
 
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
-            grid_map.save("res/map/MAP.txt")
+            grid_map.save("res/map/troll.txt")
             pygame.quit()
             sys.exit()
         elif event.type == pygame.MOUSEBUTTONDOWN and event.button == pygame.BUTTON_LEFT:
