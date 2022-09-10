@@ -10,7 +10,7 @@ class Image {
 
 public:
     // Constructors
-    explicit Image(std::string name, float size);
+    Image(std::string name, float size);
 
     // Big Five
     Image(const Image& image) = default;
@@ -20,7 +20,6 @@ public:
     ~Image() = default;
 
     // Public Methods
-    void init(const Vector2& position);
     void display(sf::RenderWindow& window) const;
     void setPosition(const Vector2& position);
 

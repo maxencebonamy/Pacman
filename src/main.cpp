@@ -1,6 +1,5 @@
 #include "SFML/Graphics.hpp"
 #include "map/map.hpp"
-#include "display/grid.hpp"
 #include "config.hpp"
 
 
@@ -14,13 +13,11 @@ int main() {
     sf::RenderWindow window(videoMode, config::WINDOW_TITLE, style);
     window.setFramerateLimit(config::WINDOW_FPS);
 
-//    sf::Image icon;
-//    icon.loadFromFile("res/icon.png");
-//    window.setIcon(icon.getSize().x, icon.getSize().y, icon.getPixelsPtr());
+    sf::Image icon;
+    icon.loadFromFile("res/img/icon.png");
+    window.setIcon(icon.getSize().x, icon.getSize().y, icon.getPixelsPtr());
 
-    std::shared_ptr<Map> map { std::make_shared<Map>("map") };
-//    map->print();
-    Grid grid { map };
+    Map map { "map" };
 
     while (window.isOpen()) {
         sf::Event event {};
@@ -31,7 +28,7 @@ int main() {
         }
 
         window.clear();
-        grid.display(window);
+        map.display(window);
         window.display();
     }
 

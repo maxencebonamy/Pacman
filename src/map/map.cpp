@@ -4,19 +4,12 @@
 // Constructors
 
 Map::Map(std::string name) :
-    _name(std::move(name))
+    _name(std::move(name)),
+    _cellSize(1)
 {
-    std::ifstream file { "res/map/" + _name + ".txt" };
-
-    std::string line;
-    while (std::getline(file, line)) {
-        _charMap.emplace_back(line);
-    }
-
-    _size = Vector2(
-        static_cast<float>(_charMap[0].size()),
-        static_cast<float>(_charMap.size())
-    );
+    _loadMapFile();
+    _loadWindowProperties();
+    _loadImages();
 }
 
 
@@ -34,90 +27,88 @@ const Vector2& Map::getSize() const {
     return _size;
 }
 
-std::string Map::getTileAt(const Vector2& position) const {
-//    return _charMap[position.getY()][position.getX()];
-    char c { _charMap[static_cast<int>(position.getY())][static_cast<int>(position.getX())] };
-
-    if (c == '_') {
-        return "void";
-    }
-    else if (c == 'W') {
-        // Corners
-        if (position.getX() == 0 && position.getY() == 0) {
-            return "walls/top_left_double_wall";
-        }
-        if (position.getX() == _size.getX() - 1 && position.getY() == 0) {
-            return "walls/top_right_double_wall";
-        }
-        if (position.getX() == 0 && position.getY() == _size.getY() - 1) {
-            return "walls/bottom_left_double_wall";
-        }
-        if (position.getX() == _size.getX() - 1 && position.getY() == _size.getY() - 1) {
-            return "walls/bottom_right_double_wall";
-        }
-        // Borders
-        if (position.getX() == 0) {
-            return "walls/left_double_wall";
-        }
-        if (position.getX() == _size.getX() - 1) {
-            return "walls/right_double_wall";
-        }
-        if (position.getY() == 0) {
-            return "walls/top_double_wall";
-        }
-        if (position.getY() == _size.getY() - 1) {
-            return "walls/bottom_double_wall";
-        }
-        // Inside
-        if (_charMap[position.getY() + 1][position.getX()] == 'W' &&
-                _charMap[position.getY()][position.getX() + 1] == 'W') {
-            return "walls/bottom_right_single_wall";
-        }
-        if (_charMap[position.getY() - 1][position.getX()] == 'W' &&
-            _charMap[position.getY()][position.getX() + 1] == 'W') {
-            return "walls/top_right_single_wall";
-        }
-        if (_charMap[position.getY() + 1][position.getX()] == 'W' &&
-            _charMap[position.getY()][position.getX() - 1] == 'W') {
-            return "walls/bottom_left_single_wall";
-        }
-        if (_charMap[position.getY() - 1][position.getX()] == 'W' &&
-            _charMap[position.getY()][position.getX() - 1] == 'W') {
-            return "walls/top_left_single_wall";
-        }
-        return "walls/bottom_single_wall";
-    }
-    else if (c == 'o') {
-        return "elements/pacgum";
-    }
-    else if (c == 'O') {
-        return "elements/super_pacgum";
-    }
-    else if (c == 'C') {
-        return "center_cell/left_center_cell";
-    }
-    else if (c == 'D') {
-        return "center_cell/door_center_cell";
-    }
-
-    return "";
+const std::string& Map::getTileAt(const Vector2& position) const {
+    return _stringMap[static_cast<int>(position.getY())][static_cast<int>(position.getX())];
 }
 
-
-// Setters
-
-void Map::setPosition(const Vector2& position) {
-    _position = position;
-}
 
 
 // Public Methods
 
-void Map::print() const {
-    for (auto& line : _charMap) {
-        for (auto& c : line) {
-            std::cout << c << ", ";
+void Map::display(sf::RenderWindow& window) {
+    for (int y { 0 }; y < static_cast<int>(_size.getY()); ++y) {
+        for (int x { 0 }; x < static_cast<int>(_size.getX()); ++x) {
+            Vector2 pos { static_cast<float>(x), static_cast<float>(y) };
+            const std::string& element { _stringMap[y][x] };
+            Image& image { _images.at(element) };
+
+            image.setPosition(_position + _cellSize * pos);
+            image.display(window);
         }
-        std::cout << std::endl;
+    }
+}
+
+
+// Private Methods
+
+void Map::_loadMapFile() {
+    std::ifstream file { "res/map/" + _name + ".txt" };
+    std::string line;
+
+    while (std::getline(file, line)) {
+        line += ';';
+        _stringMap.emplace_back();
+        std::string element;
+
+        for (auto& c : line) {
+            if (c == ';') {
+                _stringMap[_stringMap.size() - 1].emplace_back(element);
+                element.clear();
+            }
+            else {
+                element += c;
+            }
+        }
+    }
+
+    _size = Vector2(
+        static_cast<float>(_stringMap.empty() ? 0 : _stringMap[0].size()),
+        static_cast<float>(_stringMap.size())
+    );
+}
+
+void Map::_loadWindowProperties() {
+    const float windowRatio { config::WINDOW_SIZE.getX() / config::WINDOW_SIZE.getY() },
+                mapRatio { getSize().getX() / getSize().getY() };
+
+    if (windowRatio >= mapRatio) {
+        _cellSize = config::WINDOW_SIZE.getY() / getSize().getY();
+
+        _position = {
+            (config::WINDOW_SIZE.getX() - getSize().getX() * _cellSize) / 2,
+            0
+        };
+    }
+
+    else {
+        _cellSize = config::WINDOW_SIZE.getX() / getSize().getX();
+
+        _position = {
+            0,
+            (config::WINDOW_SIZE.getY() - getSize().getY() * _cellSize) / 2
+        };
+    }
+}
+
+void Map::_loadImages() {
+    std::vector<std::string> _names;
+
+    for (const auto& line : _stringMap) {
+        for (const auto& element : line) {
+            if (std::find(_names.begin(), _names.end(), element) == _names.end()) {
+                _images.insert({ element, Image(element, _cellSize) });
+                _names.emplace_back(element);
+            }
+        }
     }
 }
