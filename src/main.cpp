@@ -2,6 +2,7 @@
 #include "map/map.hpp"
 #include "config.hpp"
 #include "images/animated_image.hpp"
+#include "entities/player.hpp"
 
 
 int main() {
@@ -18,8 +19,8 @@ int main() {
     icon.loadFromFile("res/img/icon.png");
     window.setIcon(icon.getSize().x, icon.getSize().y, icon.getPixelsPtr());
 
-    Map map { "map" };
-    AnimatedImage player { "pacman/walk/walk_right", 32 };
+    std::shared_ptr<Map> map { std::make_shared<Map>("map") };
+    Player player { map, Vector2(1) };
 
     while (window.isOpen()) {
         sf::Event event {};
@@ -27,13 +28,30 @@ int main() {
             if (event.type == sf::Event::Closed ||
                 (event.type == sf::Event::KeyPressed && sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)))
                 window.close();
+            if (event.type == sf::Event::KeyPressed) {
+                if (event.key.code == sf::Keyboard::Key::Left) {
+                    player.setDirection(Direction::LEFT);
+                }
+                else if (event.key.code == sf::Keyboard::Key::Right) {
+                    player.setDirection(Direction::RIGHT);
+                }
+                else if (event.key.code == sf::Keyboard::Key::Up) {
+                    player.setDirection(Direction::UP);
+                }
+                else if (event.key.code == sf::Keyboard::Key::Down) {
+                    player.setDirection(Direction::DOWN);
+                }
+                else if (event.key.code == sf::Keyboard::Key::K) {
+                    player.kill();
+                }
+            }
         }
 
-        player.updateFrame();
+        player.update();
 
         window.clear();
-        map.display(window);
-        player.setPosition(Vector2(100));
+        map->display(window);
+//        player.setPosition(Vector2(100));
         player.display(window);
         window.display();
     }

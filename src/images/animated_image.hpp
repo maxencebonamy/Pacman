@@ -6,7 +6,7 @@
 #include "config.hpp"
 
 
-class AnimatedImage {
+class AnimatedImage final {
 
 public:
     // Constructors
@@ -15,9 +15,9 @@ public:
 
     // Big Five
     AnimatedImage(const AnimatedImage& animatedImage) = default;
-    AnimatedImage(AnimatedImage&& animatedImage) = default;
+    AnimatedImage(AnimatedImage&& animatedImage) noexcept = default;
     AnimatedImage& operator=(const AnimatedImage& animatedImage) = default;
-    AnimatedImage& operator=(AnimatedImage&& animatedImage) = default;
+    AnimatedImage& operator=(AnimatedImage&& animatedImage) noexcept = default;
     ~AnimatedImage() = default;
 
     // Getters
@@ -37,7 +37,7 @@ private:
     int _nbFrames;
     bool _loop { true };
     bool _hasFinished { false };
-    float _duration { 0.5 };
+    float _duration { 0.25 };
 
     int _animationIndex { 1 };
     int _currentFrame { 1 };

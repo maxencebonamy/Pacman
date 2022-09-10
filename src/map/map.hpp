@@ -7,11 +7,11 @@
 #include <algorithm>
 
 #include "config.hpp"
-#include "vector/vector2.hpp"
+#include "utils/vector2.hpp"
 #include "images/image.hpp"
 
 
-class Map {
+class Map final {
 
 public:
     // Constructors
@@ -28,6 +28,7 @@ public:
     const std::string& getName() const;
     const Vector2& getPosition() const;
     const Vector2& getSize() const;
+    float getCellSize() const;
     const std::string& getTileAt(const Vector2& position) const;
 
     // Public Methods

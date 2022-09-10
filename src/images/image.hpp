@@ -3,10 +3,10 @@
 #include <string>
 
 #include "SFML/Graphics.hpp"
-#include "vector/vector2.hpp"
+#include "utils/vector2.hpp"
 
 
-class Image {
+class Image final {
 
 public:
     // Constructors

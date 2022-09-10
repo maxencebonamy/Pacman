@@ -27,6 +27,10 @@ const Vector2& Map::getSize() const {
     return _size;
 }
 
+float Map::getCellSize() const {
+    return _cellSize;
+}
+
 const std::string& Map::getTileAt(const Vector2& position) const {
     return _stringMap[static_cast<int>(position.getY())][static_cast<int>(position.getX())];
 }
