@@ -85,14 +85,14 @@ struct Matrix
 };
 
 ////////////////////////////////////////////////////////////
-/// \brief 4D vector type, used to set uniforms in GLSL
+/// \brief 4D utils type, used to set uniforms in GLSL
 ///
 ////////////////////////////////////////////////////////////
 template <typename T>
 struct Vector4
 {
     ////////////////////////////////////////////////////////////
-    /// \brief Default constructor, creates a zero vector
+    /// \brief Default constructor, creates a zero utils
     ///
     ////////////////////////////////////////////////////////////
     Vector4() :
@@ -104,12 +104,12 @@ struct Vector4
     }
 
     ////////////////////////////////////////////////////////////
-    /// \brief Construct from 4 vector components
+    /// \brief Construct from 4 utils components
     ///
-    /// \param X Component of the 4D vector
-    /// \param Y Component of the 4D vector
-    /// \param Z Component of the 4D vector
-    /// \param W Component of the 4D vector
+    /// \param X Component of the 4D utils
+    /// \param Y Component of the 4D utils
+    /// \param Z Component of the 4D utils
+    /// \param W Component of the 4D utils
     ///
     ////////////////////////////////////////////////////////////
     Vector4(T X, T Y, T Z, T W) :
@@ -123,7 +123,7 @@ struct Vector4
     ////////////////////////////////////////////////////////////
     /// \brief Conversion constructor
     ///
-    /// \param other 4D vector of different type
+    /// \param other 4D utils of different type
     ///
     ////////////////////////////////////////////////////////////
     template <typename U>
@@ -136,7 +136,7 @@ struct Vector4
     }
 
     ////////////////////////////////////////////////////////////
-    /// \brief Construct float vector implicitly from color
+    /// \brief Construct float utils implicitly from color
     ///
     /// \param color Color instance. Is normalized to [0, 1]
     ///              for floats, and left as-is for ints.
@@ -148,8 +148,8 @@ struct Vector4
         copyVector(color, *this);
     }
 
-    T x; ///< 1st component (X) of the 4D vector
-    T y; ///< 2nd component (Y) of the 4D vector
-    T z; ///< 3rd component (Z) of the 4D vector
-    T w; ///< 4th component (W) of the 4D vector
+    T x; ///< 1st component (X) of the 4D utils
+    T y; ///< 2nd component (Y) of the 4D utils
+    T z; ///< 3rd component (Z) of the 4D utils
+    T w; ///< 4th component (W) of the 4D utils
 };

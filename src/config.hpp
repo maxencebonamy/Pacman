@@ -2,7 +2,7 @@
 
 #include <string>
 
-#include "vector/vector2.hpp"
+#include "utils/vector2.hpp"
 
 
 namespace config {

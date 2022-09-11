@@ -99,10 +99,10 @@ public:
     ////////////////////////////////////////////////////////////
     /// \brief Get a list of the names of all available audio capture devices
     ///
-    /// This function returns a vector of strings, containing
+    /// This function returns a utils of strings, containing
     /// the names of all available audio capture devices.
     ///
-    /// \return A vector of strings containing the names
+    /// \return A utils of strings containing the names
     ///
     ////////////////////////////////////////////////////////////
     static std::vector<std::string> getAvailableDevices();

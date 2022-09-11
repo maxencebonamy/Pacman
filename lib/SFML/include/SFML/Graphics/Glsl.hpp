@@ -58,37 +58,37 @@ namespace Glsl
 {
 
     ////////////////////////////////////////////////////////////
-    /// \brief 2D float vector (\p vec2 in GLSL)
+    /// \brief 2D float utils (\p vec2 in GLSL)
     ///
     ////////////////////////////////////////////////////////////
     typedef Vector2<float> Vec2;
 
     ////////////////////////////////////////////////////////////
-    /// \brief 2D int vector (\p ivec2 in GLSL)
+    /// \brief 2D int utils (\p ivec2 in GLSL)
     ///
     ////////////////////////////////////////////////////////////
     typedef Vector2<int> Ivec2;
 
     ////////////////////////////////////////////////////////////
-    /// \brief 2D bool vector (\p bvec2 in GLSL)
+    /// \brief 2D bool utils (\p bvec2 in GLSL)
     ///
     ////////////////////////////////////////////////////////////
     typedef Vector2<bool> Bvec2;
 
     ////////////////////////////////////////////////////////////
-    /// \brief 3D float vector (\p vec3 in GLSL)
+    /// \brief 3D float utils (\p vec3 in GLSL)
     ///
     ////////////////////////////////////////////////////////////
     typedef Vector3<float> Vec3;
 
     ////////////////////////////////////////////////////////////
-    /// \brief 3D int vector (\p ivec3 in GLSL)
+    /// \brief 3D int utils (\p ivec3 in GLSL)
     ///
     ////////////////////////////////////////////////////////////
     typedef Vector3<int> Ivec3;
 
     ////////////////////////////////////////////////////////////
-    /// \brief 3D bool vector (\p bvec3 in GLSL)
+    /// \brief 3D bool utils (\p bvec3 in GLSL)
     ///
     ////////////////////////////////////////////////////////////
     typedef Vector3<bool> Bvec3;
@@ -96,35 +96,35 @@ namespace Glsl
 #ifdef SFML_DOXYGEN
 
     ////////////////////////////////////////////////////////////
-    /// \brief 4D float vector (\p vec4 in GLSL)
+    /// \brief 4D float utils (\p vec4 in GLSL)
     ///
     /// 4D float vectors can be implicitly converted from sf::Color
     /// instances. Each color channel is normalized from integers
     /// in [0, 255] to floating point values in [0, 1].
     /// \code
     /// sf::Glsl::Vec4 zeroVector;
-    /// sf::Glsl::Vec4 vector(1.f, 2.f, 3.f, 4.f);
+    /// sf::Glsl::Vec4 utils(1.f, 2.f, 3.f, 4.f);
     /// sf::Glsl::Vec4 color = sf::Color::Cyan;
     /// \endcode
     ////////////////////////////////////////////////////////////
     typedef implementation-defined Vec4;
 
     ////////////////////////////////////////////////////////////
-    /// \brief 4D int vector (\p ivec4 in GLSL)
+    /// \brief 4D int utils (\p ivec4 in GLSL)
     ///
     /// 4D int vectors can be implicitly converted from sf::Color
     /// instances. Each color channel remains unchanged inside
     /// the integer interval [0, 255].
     /// \code
     /// sf::Glsl::Ivec4 zeroVector;
-    /// sf::Glsl::Ivec4 vector(1, 2, 3, 4);
+    /// sf::Glsl::Ivec4 utils(1, 2, 3, 4);
     /// sf::Glsl::Ivec4 color = sf::Color::Cyan;
     /// \endcode
     ////////////////////////////////////////////////////////////
     typedef implementation-defined Ivec4;
 
     ////////////////////////////////////////////////////////////
-    /// \brief 4D bool vector (\p bvec4 in GLSL)
+    /// \brief 4D bool utils (\p bvec4 in GLSL)
     ///
     ////////////////////////////////////////////////////////////
     typedef implementation-defined Bvec4;
@@ -210,7 +210,7 @@ namespace Glsl
 /// Others are newly defined, such as Glsl::Vec4 or Glsl::Mat3. Their
 /// actual type is an implementation detail and should not be used.
 ///
-/// All vector types support a default constructor that
+/// All utils types support a default constructor that
 /// initializes every component to zero, in addition to a
 /// constructor with one parameter for each component.
 /// The components are stored in member variables called

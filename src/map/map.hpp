@@ -9,6 +9,7 @@
 #include "config.hpp"
 #include "utils/vector2.hpp"
 #include "images/image.hpp"
+#include "images/animated_image.hpp"
 
 
 class Map final {
@@ -32,7 +33,9 @@ public:
     const std::string& getTileAt(const Vector2& position) const;
 
     // Public Methods
+    void update();
     void display(sf::RenderWindow& window);
+    void removeElementAt(const Vector2& position);
 
 private:
     // Private Methods
@@ -47,6 +50,6 @@ private:
     float _cellSize;
 
     std::vector<std::vector<std::string>> _stringMap;
-    std::map<std::string, Image> _images;
+    std::map<std::string, AnimatedImage> _images;
 
 };

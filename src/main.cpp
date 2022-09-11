@@ -3,6 +3,11 @@
 #include "config.hpp"
 #include "images/animated_image.hpp"
 #include "entities/player.hpp"
+#include "entities/ghosts/ghost.hpp"
+#include "entities/ghosts/blinky.hpp"
+#include "entities/ghosts/pinky.hpp"
+#include "entities/ghosts/clyde.hpp"
+#include "entities/ghosts/inky.hpp"
 
 
 int main() {
@@ -20,7 +25,16 @@ int main() {
     window.setIcon(icon.getSize().x, icon.getSize().y, icon.getPixelsPtr());
 
     std::shared_ptr<Map> map { std::make_shared<Map>("map") };
-    Player player { map, Vector2(1) };
+    Player player { map, Vector2(1, 1) };
+
+//    std::unique_ptr<Ghost> blinky { std::make_unique<Ghost>(map, Vector2(12, 14), "blinky") };
+//    std::unique_ptr<Ghost> pinky { std::make_unique<Ghost>(map, Vector2(12, 14), "pinky") };
+    std::array<std::unique_ptr<Ghost>, 4> ghosts {
+        std::make_unique<Blinky>(map, Vector2(12, 11)),
+        std::make_unique<Inky>(map, Vector2(15, 11)),
+        std::make_unique<Clyde>(map, Vector2(12, 17)),
+        std::make_unique<Pinky>(map, Vector2(15, 17))
+    };
 
     while (window.isOpen()) {
         sf::Event event {};
@@ -47,12 +61,20 @@ int main() {
             }
         }
 
+        map->update();
         player.update();
+        for (auto& element : ghosts) {
+            element->update();
+        }
 
         window.clear();
+
         map->display(window);
-//        player.setPosition(Vector2(100));
+        for (auto& element : ghosts) {
+            element->display(window);
+        }
         player.display(window);
+
         window.display();
     }
 

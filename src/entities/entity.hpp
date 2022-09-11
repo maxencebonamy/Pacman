@@ -11,14 +11,14 @@ class Entity {
 
 public:
     // Constructors
-    explicit Entity(std::shared_ptr<Map> map, const Vector2& position);
+    Entity(std::shared_ptr<Map> map, const Vector2& position);
 
     // Big Five
     Entity(const Entity& entity) = default;
     Entity(Entity&& entity) noexcept = default;
     Entity& operator=(const Entity& entity) = default;
     Entity& operator=(Entity&& entity) noexcept = default;
-    ~Entity() = default;
+    virtual ~Entity() = default;
 
     // Getters
     virtual const Vector2& getPosition() const;
@@ -36,5 +36,7 @@ protected:
     std::shared_ptr<Map> _map;
     Vector2 _position;
     Direction _direction;
+    Direction _nextDirection;
+    float _speed { 0.1 };
 
 };

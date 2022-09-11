@@ -104,12 +104,12 @@ public:
     static Vector3f getPosition();
 
     ////////////////////////////////////////////////////////////
-    /// \brief Set the forward vector of the listener in the scene
+    /// \brief Set the forward utils of the listener in the scene
     ///
-    /// The direction (also called "at vector") is the vector
+    /// The direction (also called "at utils") is the utils
     /// pointing forward from the listener's perspective. Together
-    /// with the up vector, it defines the 3D orientation of the
-    /// listener in the scene. The direction vector doesn't
+    /// with the up utils, it defines the 3D orientation of the
+    /// listener in the scene. The direction utils doesn't
     /// have to be normalized.
     /// The default listener's direction is (0, 0, -1).
     ///
@@ -123,12 +123,12 @@ public:
     static void setDirection(float x, float y, float z);
 
     ////////////////////////////////////////////////////////////
-    /// \brief Set the forward vector of the listener in the scene
+    /// \brief Set the forward utils of the listener in the scene
     ///
-    /// The direction (also called "at vector") is the vector
+    /// The direction (also called "at utils") is the utils
     /// pointing forward from the listener's perspective. Together
-    /// with the up vector, it defines the 3D orientation of the
-    /// listener in the scene. The direction vector doesn't
+    /// with the up utils, it defines the 3D orientation of the
+    /// listener in the scene. The direction utils doesn't
     /// have to be normalized.
     /// The default listener's direction is (0, 0, -1).
     ///
@@ -140,9 +140,9 @@ public:
     static void setDirection(const Vector3f& direction);
 
     ////////////////////////////////////////////////////////////
-    /// \brief Get the current forward vector of the listener in the scene
+    /// \brief Get the current forward utils of the listener in the scene
     ///
-    /// \return Listener's forward vector (not normalized)
+    /// \return Listener's forward utils (not normalized)
     ///
     /// \see setDirection
     ///
@@ -150,18 +150,18 @@ public:
     static Vector3f getDirection();
 
     ////////////////////////////////////////////////////////////
-    /// \brief Set the upward vector of the listener in the scene
+    /// \brief Set the upward utils of the listener in the scene
     ///
-    /// The up vector is the vector that points upward from the
+    /// The up utils is the utils that points upward from the
     /// listener's perspective. Together with the direction, it
     /// defines the 3D orientation of the listener in the scene.
-    /// The up vector doesn't have to be normalized.
-    /// The default listener's up vector is (0, 1, 0). It is usually
+    /// The up utils doesn't have to be normalized.
+    /// The default listener's up utils is (0, 1, 0). It is usually
     /// not necessary to change it, especially in 2D scenarios.
     ///
-    /// \param x X coordinate of the listener's up vector
-    /// \param y Y coordinate of the listener's up vector
-    /// \param z Z coordinate of the listener's up vector
+    /// \param x X coordinate of the listener's up utils
+    /// \param y Y coordinate of the listener's up utils
+    /// \param z Z coordinate of the listener's up utils
     ///
     /// \see getUpVector, setDirection, setPosition
     ///
@@ -169,16 +169,16 @@ public:
     static void setUpVector(float x, float y, float z);
 
     ////////////////////////////////////////////////////////////
-    /// \brief Set the upward vector of the listener in the scene
+    /// \brief Set the upward utils of the listener in the scene
     ///
-    /// The up vector is the vector that points upward from the
+    /// The up utils is the utils that points upward from the
     /// listener's perspective. Together with the direction, it
     /// defines the 3D orientation of the listener in the scene.
-    /// The up vector doesn't have to be normalized.
-    /// The default listener's up vector is (0, 1, 0). It is usually
+    /// The up utils doesn't have to be normalized.
+    /// The default listener's up utils is (0, 1, 0). It is usually
     /// not necessary to change it, especially in 2D scenarios.
     ///
-    /// \param upVector New listener's up vector
+    /// \param upVector New listener's up utils
     ///
     /// \see getUpVector, setDirection, setPosition
     ///
@@ -186,9 +186,9 @@ public:
     static void setUpVector(const Vector3f& upVector);
 
     ////////////////////////////////////////////////////////////
-    /// \brief Get the current upward vector of the listener in the scene
+    /// \brief Get the current upward utils of the listener in the scene
     ///
-    /// \return Listener's upward vector (not normalized)
+    /// \return Listener's upward utils (not normalized)
     ///
     /// \see setUpVector
     ///
@@ -214,7 +214,7 @@ public:
 ///
 /// sf::Listener is a simple interface, which allows to setup the
 /// listener in the 3D audio environment (position, direction and
-/// up vector), and to adjust the global volume.
+/// up utils), and to adjust the global volume.
 ///
 /// Because the listener is unique in the scene, sf::Listener only
 /// contains static functions and doesn't have to be instantiated.

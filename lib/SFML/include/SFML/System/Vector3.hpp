@@ -47,7 +47,7 @@ public:
     Vector3();
 
     ////////////////////////////////////////////////////////////
-    /// \brief Construct the vector from its coordinates
+    /// \brief Construct the utils from its coordinates
     ///
     /// \param X X coordinate
     /// \param Y Y coordinate
@@ -57,7 +57,7 @@ public:
     Vector3(T X, T Y, T Z);
 
     ////////////////////////////////////////////////////////////
-    /// \brief Construct the vector from another type of vector
+    /// \brief Construct the utils from another type of utils
     ///
     /// This constructor doesn't replace the copy constructor,
     /// it's called only when U != T.
@@ -73,9 +73,9 @@ public:
     ////////////////////////////////////////////////////////////
     // Member data
     ////////////////////////////////////////////////////////////
-    T x; ///< X coordinate of the vector
-    T y; ///< Y coordinate of the vector
-    T z; ///< Z coordinate of the vector
+    T x; ///< X coordinate of the utils
+    T y; ///< Y coordinate of the utils
+    T z; ///< Z coordinate of the utils
 };
 
 ////////////////////////////////////////////////////////////
@@ -84,7 +84,7 @@ public:
 ///
 /// \param left Vector to negate
 ///
-/// \return Memberwise opposite of the vector
+/// \return Memberwise opposite of the utils
 ///
 ////////////////////////////////////////////////////////////
 template <typename T>
@@ -97,8 +97,8 @@ Vector3<T> operator -(const Vector3<T>& left);
 /// This operator performs a memberwise addition of both vectors,
 /// and assigns the result to \a left.
 ///
-/// \param left  Left operand (a vector)
-/// \param right Right operand (a vector)
+/// \param left  Left operand (a utils)
+/// \param right Right operand (a utils)
 ///
 /// \return Reference to \a left
 ///
@@ -113,8 +113,8 @@ Vector3<T>& operator +=(Vector3<T>& left, const Vector3<T>& right);
 /// This operator performs a memberwise subtraction of both vectors,
 /// and assigns the result to \a left.
 ///
-/// \param left  Left operand (a vector)
-/// \param right Right operand (a vector)
+/// \param left  Left operand (a utils)
+/// \param right Right operand (a utils)
 ///
 /// \return Reference to \a left
 ///
@@ -126,8 +126,8 @@ Vector3<T>& operator -=(Vector3<T>& left, const Vector3<T>& right);
 /// \relates Vector3
 /// \brief Overload of binary operator +
 ///
-/// \param left  Left operand (a vector)
-/// \param right Right operand (a vector)
+/// \param left  Left operand (a utils)
+/// \param right Right operand (a utils)
 ///
 /// \return Memberwise addition of both vectors
 ///
@@ -139,8 +139,8 @@ Vector3<T> operator +(const Vector3<T>& left, const Vector3<T>& right);
 /// \relates Vector3
 /// \brief Overload of binary operator -
 ///
-/// \param left  Left operand (a vector)
-/// \param right Right operand (a vector)
+/// \param left  Left operand (a utils)
+/// \param right Right operand (a utils)
 ///
 /// \return Memberwise subtraction of both vectors
 ///
@@ -152,7 +152,7 @@ Vector3<T> operator -(const Vector3<T>& left, const Vector3<T>& right);
 /// \relates Vector3
 /// \brief Overload of binary operator *
 ///
-/// \param left  Left operand (a vector)
+/// \param left  Left operand (a utils)
 /// \param right Right operand (a scalar value)
 ///
 /// \return Memberwise multiplication by \a right
@@ -166,7 +166,7 @@ Vector3<T> operator *(const Vector3<T>& left, T right);
 /// \brief Overload of binary operator *
 ///
 /// \param left  Left operand (a scalar value)
-/// \param right Right operand (a vector)
+/// \param right Right operand (a utils)
 ///
 /// \return Memberwise multiplication by \a left
 ///
@@ -181,7 +181,7 @@ Vector3<T> operator *(T left, const Vector3<T>& right);
 /// This operator performs a memberwise multiplication by \a right,
 /// and assigns the result to \a left.
 ///
-/// \param left  Left operand (a vector)
+/// \param left  Left operand (a utils)
 /// \param right Right operand (a scalar value)
 ///
 /// \return Reference to \a left
@@ -194,7 +194,7 @@ Vector3<T>& operator *=(Vector3<T>& left, T right);
 /// \relates Vector3
 /// \brief Overload of binary operator /
 ///
-/// \param left  Left operand (a vector)
+/// \param left  Left operand (a utils)
 /// \param right Right operand (a scalar value)
 ///
 /// \return Memberwise division by \a right
@@ -210,7 +210,7 @@ Vector3<T> operator /(const Vector3<T>& left, T right);
 /// This operator performs a memberwise division by \a right,
 /// and assigns the result to \a left.
 ///
-/// \param left  Left operand (a vector)
+/// \param left  Left operand (a utils)
 /// \param right Right operand (a scalar value)
 ///
 /// \return Reference to \a left
@@ -225,8 +225,8 @@ Vector3<T>& operator /=(Vector3<T>& left, T right);
 ///
 /// This operator compares strict equality between two vectors.
 ///
-/// \param left  Left operand (a vector)
-/// \param right Right operand (a vector)
+/// \param left  Left operand (a utils)
+/// \param right Right operand (a utils)
 ///
 /// \return True if \a left is equal to \a right
 ///
@@ -240,8 +240,8 @@ bool operator ==(const Vector3<T>& left, const Vector3<T>& right);
 ///
 /// This operator compares strict difference between two vectors.
 ///
-/// \param left  Left operand (a vector)
-/// \param right Right operand (a vector)
+/// \param left  Left operand (a utils)
+/// \param right Right operand (a utils)
 ///
 /// \return True if \a left is not equal to \a right
 ///
@@ -266,7 +266,7 @@ typedef Vector3<float> Vector3f;
 /// \ingroup system
 ///
 /// sf::Vector3 is a simple class that defines a mathematical
-/// vector with three coordinates (x, y and z). It can be used to
+/// utils with three coordinates (x, y and z). It can be used to
 /// represent anything that has three dimensions: a size, a point,
 /// a velocity, etc.
 ///

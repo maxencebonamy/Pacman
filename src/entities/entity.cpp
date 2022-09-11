@@ -8,7 +8,8 @@
 Entity::Entity(std::shared_ptr<Map> map, const Vector2& position) :
     _map(std::move(map)),
     _position(position),
-    _direction(Direction::UP)
+    _direction(Direction::UP),
+    _nextDirection(_direction)
 {}
 
 

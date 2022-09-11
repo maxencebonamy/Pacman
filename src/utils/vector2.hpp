@@ -13,8 +13,14 @@ public:
     Vector2();
     Vector2(float value);
     Vector2(float x, float y);
-    Vector2(const Vector2& vector);
     static Vector2 fromPolar(float norm, float angle);
+
+    // Big Five
+    Vector2(const Vector2& vector) = default;
+    Vector2(Vector2&& vector) noexcept = default;
+    Vector2& operator=(const Vector2& vector) = default;
+    Vector2& operator=(Vector2&& vector) noexcept = default;
+    ~Vector2() = default;
 
     // Default vectors
     static Vector2 zero();
@@ -39,7 +45,6 @@ public:
     float distanceTo(const Vector2& vector) const;
 
     // Operators
-    Vector2& operator=(const Vector2& vector);
     float operator[](int index) const;
     float operator[](char index) const;
 

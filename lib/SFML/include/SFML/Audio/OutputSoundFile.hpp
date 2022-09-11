@@ -121,7 +121,7 @@ private:
 /// while (...)
 /// {
 ///     // Read or generate audio samples from your custom source
-///     std::vector<sf::Int16> samples = ...;
+///     std::utils<sf::Int16> samples = ...;
 ///
 ///     // Write them to the file
 ///     file.write(samples.data(), samples.size());

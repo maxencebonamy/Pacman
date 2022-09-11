@@ -3,9 +3,10 @@
 #include "entity.hpp"
 #include "images/animated_image.hpp"
 #include "direction.hpp"
+#include "utils/rect.hpp"
 
 
-class Player : public Entity {
+class Player final : public Entity {
 
 public:
     // Constructors
@@ -25,7 +26,6 @@ private:
 
     // Attributes
     AnimatedImage _image;
-    float _speed { 0.1 };
     bool _isDead { false };
 
 };

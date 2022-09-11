@@ -39,17 +39,27 @@ const std::string& Map::getTileAt(const Vector2& position) const {
 
 // Public Methods
 
+void Map::update() {
+    for (auto& image : _images) {
+        image.second.updateFrame();
+    }
+}
+
 void Map::display(sf::RenderWindow& window) {
     for (int y { 0 }; y < static_cast<int>(_size.getY()); ++y) {
         for (int x { 0 }; x < static_cast<int>(_size.getX()); ++x) {
             Vector2 pos { static_cast<float>(x), static_cast<float>(y) };
             const std::string& element { _stringMap[y][x] };
-            Image& image { _images.at(element) };
+            AnimatedImage& image { _images.at(element) };
 
             image.setPosition(_position + _cellSize * pos);
             image.display(window);
         }
     }
+}
+
+void Map::removeElementAt(const Vector2& position) {
+    _stringMap[static_cast<int>(position.getY())][static_cast<int>(position.getX())] = "void";
 }
 
 
@@ -110,7 +120,11 @@ void Map::_loadImages() {
     for (const auto& line : _stringMap) {
         for (const auto& element : line) {
             if (std::find(_names.begin(), _names.end(), element) == _names.end()) {
-                _images.insert({ element, Image("map/" + element, _cellSize) });
+                std::vector<std::string> names { "map/" + element };
+                if (element == "super_pacgum") {
+                    names.emplace_back("map/void");
+                }
+                _images.insert({ element, AnimatedImage(names, _cellSize) });
                 _names.emplace_back(element);
             }
         }

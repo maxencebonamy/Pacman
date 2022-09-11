@@ -211,7 +211,7 @@ SFML_WINDOW_API bool operator >=(const VideoMode& left, const VideoMode& right);
 /// Usage example:
 /// \code
 /// // Display the list of all the video modes available for fullscreen
-/// std::vector<sf::VideoMode> modes = sf::VideoMode::getFullscreenModes();
+/// std::utils<sf::VideoMode> modes = sf::VideoMode::getFullscreenModes();
 /// for (std::size_t i = 0; i < modes.size(); ++i)
 /// {
 ///     sf::VideoMode mode = modes[i];

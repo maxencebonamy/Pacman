@@ -1,66 +1,98 @@
-#include "vector/vector2.hpp"
+#include "vector2.hpp"
 
 
 // Constructors
 
-Vector2::Vector2() : _x(0), _y(0) {}
+Vector2::Vector2() :
+    _x(0),
+    _y(0)
+{}
 
-Vector2::Vector2(float value) : _x(value), _y(value) {}
+Vector2::Vector2(float value) :
+    _x(value),
+    _y(value)
+{}
 
-Vector2::Vector2(float x, float y) : _x(x), _y(y) {}
+Vector2::Vector2(float x, float y) :
+    _x(x),
+    _y(y)
+{}
 
-Vector2::Vector2(const Vector2& vector) : _x(vector.getX()), _y(vector.getY()) {}
-
-Vector2 Vector2::fromPolar(float norm, float angle) { return {norm * std::cos(angle), norm * std::sin(angle)}; }
+Vector2 Vector2::fromPolar(float norm, float angle) {
+    return {norm * std::cos(angle), norm * std::sin(angle)};
+}
 
 
 // Default vectors
 
-Vector2 Vector2::zero() { return {}; }
+Vector2 Vector2::zero() {
+    return {};
+}
 
-Vector2 Vector2::one() { return {1}; }
+Vector2 Vector2::one() {
+    return { 1 };
+}
 
-Vector2 Vector2::unitX() { return {1, 0}; }
+Vector2 Vector2::unitX() {
+    return { 1, 0 };
+}
 
-Vector2 Vector2::unitY() { return {0, 1}; }
+Vector2 Vector2::unitY() {
+    return { 0, 1 };
+}
 
 
 // Getters
 
-float Vector2::getX() const { return _x; }
+float Vector2::getX() const {
+    return _x;
+}
 
-float Vector2::getY() const { return _y; }
+float Vector2::getY() const {
+    return _y;
+}
 
 
 // Setters
 
-void Vector2::setX(float value) { _x = value; }
+void Vector2::setX(float value) {
+    _x = value;
+}
 
-void Vector2::setY(float value) { _y = value; }
+void Vector2::setY(float value) {
+    _y = value;
+}
 
 
 // Properties
 
-float Vector2::getNorm() const { return std::hypot(_x, _y); }
+float Vector2::getNorm() const {
+    return std::hypot(_x, _y);
+}
 
-float Vector2::getAngle() const { return std::atan2(_y, _x); }
+float Vector2::getAngle() const {
+    return std::atan2(_y, _x);
+}
 
-Vector2 Vector2::getNormalised() const { return *this / this->getNorm(); }
+Vector2 Vector2::getNormalised() const {
+    return *this / this->getNorm();
+}
 
-sf::Vector2f Vector2::toSFML() const { return {_x, _y}; }
+sf::Vector2f Vector2::toSFML() const {
+    return {_x, _y};
+}
 
-float Vector2::dot(const Vector2& vector) const { return _x * vector.getX() + _y * vector.getY(); }
+float Vector2::dot(const Vector2& vector) const {
+    return _x * vector.getX() + _y * vector.getY();
+}
 
-float Vector2::distanceTo(const Vector2& vector) const { return (*this - vector).getNorm(); }
+float Vector2::distanceTo(const Vector2& vector) const {
+    return (*this - vector).getNorm();
+}
 
 
 // Operators
 
-Vector2& Vector2::operator=(const Vector2& vector) {
-    _x = vector.getX();
-    _y = vector.getY();
-    return *this;
-}
 float Vector2::operator[](int index) const {
     assert(index == 0 || index == 1);
     if (index == 0) return _x;

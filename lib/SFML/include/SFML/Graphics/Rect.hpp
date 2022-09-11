@@ -209,7 +209,7 @@ typedef Rect<float> FloatRect;
 /// A rectangle is defined by its top-left corner and its size.
 /// It is a very simple class defined for convenience, so
 /// its member variables (left, top, width and height) are public
-/// and can be accessed directly, just like the vector classes
+/// and can be accessed directly, just like the utils classes
 /// (Vector2 and Vector3).
 ///
 /// To keep things simple, sf::Rect doesn't define

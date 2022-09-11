@@ -300,7 +300,7 @@ public:
     /// \brief Specify value for \p vec2 uniform
     ///
     /// \param name   Name of the uniform variable in GLSL
-    /// \param vector Value of the vec2 vector
+    /// \param vector Value of the vec2 utils
     ///
     ////////////////////////////////////////////////////////////
     void setUniform(const std::string& name, const Glsl::Vec2& vector);
@@ -309,7 +309,7 @@ public:
     /// \brief Specify value for \p vec3 uniform
     ///
     /// \param name   Name of the uniform variable in GLSL
-    /// \param vector Value of the vec3 vector
+    /// \param vector Value of the vec3 utils
     ///
     ////////////////////////////////////////////////////////////
     void setUniform(const std::string& name, const Glsl::Vec3& vector);
@@ -327,7 +327,7 @@ public:
     /// to a vec4(1.0, 0.5, 0.0, 1.0) in the shader.
     ///
     /// \param name   Name of the uniform variable in GLSL
-    /// \param vector Value of the vec4 vector
+    /// \param vector Value of the vec4 utils
     ///
     ////////////////////////////////////////////////////////////
     void setUniform(const std::string& name, const Glsl::Vec4& vector);
@@ -345,7 +345,7 @@ public:
     /// \brief Specify value for \p ivec2 uniform
     ///
     /// \param name   Name of the uniform variable in GLSL
-    /// \param vector Value of the ivec2 vector
+    /// \param vector Value of the ivec2 utils
     ///
     ////////////////////////////////////////////////////////////
     void setUniform(const std::string& name, const Glsl::Ivec2& vector);
@@ -354,7 +354,7 @@ public:
     /// \brief Specify value for \p ivec3 uniform
     ///
     /// \param name   Name of the uniform variable in GLSL
-    /// \param vector Value of the ivec3 vector
+    /// \param vector Value of the ivec3 utils
     ///
     ////////////////////////////////////////////////////////////
     void setUniform(const std::string& name, const Glsl::Ivec3& vector);
@@ -371,7 +371,7 @@ public:
     /// mapped to ivec4(255, 127, 0, 255).
     ///
     /// \param name   Name of the uniform variable in GLSL
-    /// \param vector Value of the ivec4 vector
+    /// \param vector Value of the ivec4 utils
     ///
     ////////////////////////////////////////////////////////////
     void setUniform(const std::string& name, const Glsl::Ivec4& vector);
@@ -389,7 +389,7 @@ public:
     /// \brief Specify value for \p bvec2 uniform
     ///
     /// \param name   Name of the uniform variable in GLSL
-    /// \param vector Value of the bvec2 vector
+    /// \param vector Value of the bvec2 utils
     ///
     ////////////////////////////////////////////////////////////
     void setUniform(const std::string& name, const Glsl::Bvec2& vector);
@@ -398,7 +398,7 @@ public:
     /// \brief Specify value for \p bvec3 uniform
     ///
     /// \param name   Name of the uniform variable in GLSL
-    /// \param vector Value of the bvec3 vector
+    /// \param vector Value of the bvec3 utils
     ///
     ////////////////////////////////////////////////////////////
     void setUniform(const std::string& name, const Glsl::Bvec3& vector);
@@ -407,7 +407,7 @@ public:
     /// \brief Specify value for \p bvec4 uniform
     ///
     /// \param name   Name of the uniform variable in GLSL
-    /// \param vector Value of the bvec4 vector
+    /// \param vector Value of the bvec4 utils
     ///
     ////////////////////////////////////////////////////////////
     void setUniform(const std::string& name, const Glsl::Bvec4& vector);
@@ -554,7 +554,7 @@ public:
     SFML_DEPRECATED void setParameter(const std::string& name, float x);
 
     ////////////////////////////////////////////////////////////
-    /// \brief Change a 2-components vector parameter of the shader
+    /// \brief Change a 2-components utils parameter of the shader
     ///
     /// \deprecated Use setUniform(const std::string&, const Glsl::Vec2&) instead.
     ///
@@ -562,7 +562,7 @@ public:
     SFML_DEPRECATED void setParameter(const std::string& name, float x, float y);
 
     ////////////////////////////////////////////////////////////
-    /// \brief Change a 3-components vector parameter of the shader
+    /// \brief Change a 3-components utils parameter of the shader
     ///
     /// \deprecated Use setUniform(const std::string&, const Glsl::Vec3&) instead.
     ///
@@ -570,7 +570,7 @@ public:
     SFML_DEPRECATED void setParameter(const std::string& name, float x, float y, float z);
 
     ////////////////////////////////////////////////////////////
-    /// \brief Change a 4-components vector parameter of the shader
+    /// \brief Change a 4-components utils parameter of the shader
     ///
     /// \deprecated Use setUniform(const std::string&, const Glsl::Vec4&) instead.
     ///
@@ -578,7 +578,7 @@ public:
     SFML_DEPRECATED void setParameter(const std::string& name, float x, float y, float z, float w);
 
     ////////////////////////////////////////////////////////////
-    /// \brief Change a 2-components vector parameter of the shader
+    /// \brief Change a 2-components utils parameter of the shader
     ///
     /// \deprecated Use setUniform(const std::string&, const Glsl::Vec2&) instead.
     ///
@@ -586,7 +586,7 @@ public:
     SFML_DEPRECATED void setParameter(const std::string& name, const Vector2f& vector);
 
     ////////////////////////////////////////////////////////////
-    /// \brief Change a 3-components vector parameter of the shader
+    /// \brief Change a 3-components utils parameter of the shader
     ///
     /// \deprecated Use setUniform(const std::string&, const Glsl::Vec3&) instead.
     ///
@@ -789,7 +789,7 @@ private:
 /// \li samplers (textures)
 ///
 /// Some SFML-specific types can be converted:
-/// \li sf::Color as a 4D vector (\p vec4)
+/// \li sf::Color as a 4D utils (\p vec4)
 /// \li sf::Transform as matrices (\p mat3 or \p mat4)
 ///
 /// Every uniform variable in a shader can be set through one of the
