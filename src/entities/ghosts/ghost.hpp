@@ -20,10 +20,18 @@ public:
     // Public Methods
     void update() override;
     void display(sf::RenderWindow& window) override;
+    void scare();
 
 protected:
+    // Protected Methods
+    void _updateImage() override;
+
     // Attributes
     std::string _name;
     AnimatedImage _image;
+
+    bool _isScary { false };
+    float _scareTime { 0 };
+    float _scareDuration { 10.f };
 
 };

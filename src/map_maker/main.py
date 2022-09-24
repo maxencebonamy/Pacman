@@ -29,7 +29,7 @@ while True:
 
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
-            grid_map.save("res/map/troll.txt")
+            grid_map.save("res/map/testt.txt")
             pygame.quit()
             sys.exit()
         elif event.type == pygame.MOUSEBUTTONDOWN and event.button == pygame.BUTTON_LEFT:

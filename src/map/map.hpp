@@ -36,6 +36,8 @@ public:
     void update();
     void display(sf::RenderWindow& window);
     void removeElementAt(const Vector2& position);
+    bool isInBounds(const Vector2& position) const;
+    bool containsPacgums() const;
 
 private:
     // Private Methods
@@ -48,6 +50,7 @@ private:
     Vector2 _position;
     Vector2 _size;
     float _cellSize;
+    bool _containsPacgums { true };
 
     std::vector<std::vector<std::string>> _stringMap;
     std::map<std::string, AnimatedImage> _images;

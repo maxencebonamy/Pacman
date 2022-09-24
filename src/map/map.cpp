@@ -60,6 +60,28 @@ void Map::display(sf::RenderWindow& window) {
 
 void Map::removeElementAt(const Vector2& position) {
     _stringMap[static_cast<int>(position.getY())][static_cast<int>(position.getX())] = "void";
+
+    _containsPacgums = false;
+    for (int i { 0 }; i < static_cast<int>(_size.getY()); ++i) {
+        for (int j { 0 }; j < static_cast<int>(_size.getX()); ++j) {
+            if (_stringMap[i][j] == "pacgum" || _stringMap[i][j] == "super_pacgum") {
+                _containsPacgums = true;
+                break;
+            }
+        }
+        if (_containsPacgums) {
+            break;
+        }
+    }
+}
+
+bool Map::isInBounds(const Vector2& position) const {
+    return 0 <= position.getX() && position.getX() < _size.getX() &&
+           0 <= position.getY() && position.getY() < _size.getY();
+}
+
+bool Map::containsPacgums() const {
+    return _containsPacgums;
 }
 
 

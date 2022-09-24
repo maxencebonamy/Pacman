@@ -15,4 +15,4 @@ enum class Direction {
 
 Vector2 directionToVector(Direction direction);
 std::string directionToName(Direction direction);
-
+std::array<Direction, 4> getAllRandomDirections();

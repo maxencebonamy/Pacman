@@ -16,3 +16,26 @@ std::string directionToName(Direction direction) {
     else if (direction == Direction::DOWN) return "down";
     return "";
 }
+
+std::array<Direction, 4> getAllRandomDirections() {
+    std::array<Direction, 4> output {};
+
+    std::array<Direction, 4> directions = {
+        Direction::LEFT,
+        Direction::RIGHT,
+        Direction::UP,
+        Direction::DOWN
+    };
+
+    for (int i { 0 }; i < 4; ++i) {
+        Direction dir;
+
+        do {
+            dir = directions[rand() % 4];
+        } while (std::find(output.begin(), output.end(), dir) != output.end());
+
+        output[i] = dir;
+    }
+
+    return output;
+}

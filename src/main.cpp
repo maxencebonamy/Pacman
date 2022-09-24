@@ -1,9 +1,7 @@
 #include "SFML/Graphics.hpp"
 #include "map/map.hpp"
 #include "config.hpp"
-#include "images/animated_image.hpp"
 #include "entities/player.hpp"
-#include "entities/ghosts/ghost.hpp"
 #include "entities/ghosts/blinky.hpp"
 #include "entities/ghosts/pinky.hpp"
 #include "entities/ghosts/clyde.hpp"
@@ -11,6 +9,9 @@
 
 
 int main() {
+
+    bool hasWon { false };
+    bool close { false };
 
     sf::VideoMode videoMode {
         static_cast<unsigned int>(config::WINDOW_SIZE.getX()),
@@ -40,8 +41,11 @@ int main() {
         sf::Event event {};
         while (window.pollEvent(event)) {
             if (event.type == sf::Event::Closed ||
-                (event.type == sf::Event::KeyPressed && sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)))
+                    (event.type == sf::Event::KeyPressed && sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))) {
                 window.close();
+                close = true;
+                break;
+            }
             if (event.type == sf::Event::KeyPressed) {
                 if (event.key.code == sf::Keyboard::Key::Left) {
                     player.setDirection(Direction::LEFT);
@@ -61,10 +65,22 @@ int main() {
             }
         }
 
+        if (close) {
+            break;
+        }
+
         map->update();
+        if (!map->containsPacgums() && !hasWon) {
+            hasWon = true;
+            std::cout << "Win" << std::endl;
+        }
+
         player.update();
-        for (auto& element : ghosts) {
-            element->update();
+        for (auto& ghost : ghosts) {
+            if (player.hasAteSuperPacgum()) {
+                ghost->scare();
+            }
+            ghost->update();
         }
 
         window.clear();

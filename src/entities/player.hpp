@@ -19,13 +19,15 @@ public:
     void update() override;
     void display(sf::RenderWindow& window) override;
     void kill();
+    bool hasAteSuperPacgum() const;
 
 private:
     // Private Methods
-    void _updateImage();
+    void _updateImage() override;
 
     // Attributes
     AnimatedImage _image;
     bool _isDead { false };
+    bool _hasAteSuperPacgum { false };
 
 };

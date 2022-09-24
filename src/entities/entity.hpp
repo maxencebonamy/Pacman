@@ -32,11 +32,17 @@ public:
     virtual void display(sf::RenderWindow& window) = 0;
 
 protected:
+    // Protected Methods
+    bool _isOnCell() const;
+    Vector2 _getNextPosition(Direction direction) const;
+    bool _canMoveTo(Direction direction) const;
+    virtual void _updateImage() = 0;
+
     // Attributes
     std::shared_ptr<Map> _map;
     Vector2 _position;
     Direction _direction;
     Direction _nextDirection;
-    float _speed { 0.1 };
+    float _speed { 0.1f * 60.f / static_cast<float>(config::WINDOW_FPS) };
 
 };
