@@ -30,6 +30,7 @@ public:
     // Public Methods
     virtual void update() = 0;
     virtual void display(sf::RenderWindow& window) = 0;
+    bool collide(const Entity& entity) const;
 
 protected:
     // Protected Methods

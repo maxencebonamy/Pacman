@@ -10,6 +10,17 @@ Ghost::Ghost(std::shared_ptr<Map> map, const Vector2& position, std::string name
 {}
 
 
+// Getters
+
+const std::string& Ghost::getName() const {
+    return _name;
+}
+
+bool Ghost::isScary() const {
+    return _isScary;
+}
+
+
 // Public Methods
 
 void Ghost::update() {

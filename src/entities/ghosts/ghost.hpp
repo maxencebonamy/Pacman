@@ -17,6 +17,10 @@ public:
     Ghost& operator=(Ghost&& ghost) noexcept = default;
     ~Ghost() override = default;
 
+    // Getters
+    const std::string& getName() const;
+    bool isScary() const;
+
     // Public Methods
     void update() override;
     void display(sf::RenderWindow& window) override;

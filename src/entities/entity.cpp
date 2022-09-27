@@ -31,6 +31,13 @@ void Entity::setDirection(Direction direction) {
 }
 
 
+// Public Methods
+
+bool Entity::collide(const Entity& entity) const {
+    return (_position - entity._position).getNorm() <= 1;
+}
+
+
 // Protected Methods
 
 bool Entity::_isOnCell() const {
