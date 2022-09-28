@@ -4,7 +4,7 @@
 #include "entities/ghosts/ghost.hpp"
 #include "entities/player.hpp"
 #include "display/label.hpp"
-#include "time/timer.hpp"
+#include "utils/timer.hpp"
 
 
 class Game {

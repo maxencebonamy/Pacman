@@ -1,7 +1,7 @@
 #pragma once
 
 #include "entity.hpp"
-#include "images/animated_image.hpp"
+#include "display/animated_image.hpp"
 #include "direction.hpp"
 #include "utils/rect.hpp"
 

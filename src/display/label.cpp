@@ -35,5 +35,7 @@ void Label::setContent(std::string content) {
 // Public Methods
 
 void Label::display(sf::RenderWindow& window) const {
-    window.draw(_text);
+    if (!_content.empty()) {
+        window.draw(_text);
+    }
 }

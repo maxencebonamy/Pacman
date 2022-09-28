@@ -1,7 +1,7 @@
 #pragma once
 
 #include "entities/entity.hpp"
-#include "images/animated_image.hpp"
+#include "display/animated_image.hpp"
 
 
 class Ghost : public Entity {

@@ -8,8 +8,8 @@
 
 #include "config.hpp"
 #include "utils/vector2.hpp"
-#include "images/image.hpp"
-#include "images/animated_image.hpp"
+#include "display/image.hpp"
+#include "display/animated_image.hpp"
 
 
 class Map final {
