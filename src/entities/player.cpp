@@ -11,6 +11,13 @@ Player::Player(std::shared_ptr<Map> map, const Vector2& position) :
 }
 
 
+// Getters
+
+bool Player::hasFinished() const {
+    return _hasFinished;
+}
+
+
 // Setters
 
 void Player::setDirection(Direction direction) {
@@ -71,6 +78,9 @@ void Player::update() {
     }
     if (!_image.hasFinished()) {
         _image.updateFrame();
+    }
+    if (_isDead && _image.hasFinished()) {
+        _hasFinished = true;
     }
 }
 

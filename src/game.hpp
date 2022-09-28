@@ -3,10 +3,21 @@
 #include "config.hpp"
 #include "entities/ghosts/ghost.hpp"
 #include "entities/player.hpp"
+#include "display/label.hpp"
+#include "time/timer.hpp"
+
 
 class Game {
 
 public:
+    // Enums
+    enum class State {
+        IDLING,
+        PLAYING,
+        DYING,
+        ENDING,
+    };
+
     // Constructors
     Game();
 
@@ -24,13 +35,15 @@ public:
 
 private:
     // Private Methods
-    void _checkCollisions() const;
+    void _checkCollisions();
 
     // Attributes
     std::shared_ptr<Map> _map;
     std::unique_ptr<Player> _player;
     std::array<std::unique_ptr<Ghost>, 4> _ghosts;
 
-    bool _hasWon { false };
+    State _state;
+    Label _label;
+    Timer _startingTimer;
 
 };

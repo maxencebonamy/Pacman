@@ -12,6 +12,9 @@ public:
     // Constructors
     Player(std::shared_ptr<Map> map, const Vector2& position);
 
+    // Getters
+    bool hasFinished() const;
+
     // Setters
     void setDirection(Direction direction) override;
 
@@ -29,5 +32,6 @@ private:
     AnimatedImage _image;
     bool _isDead { false };
     bool _hasAteSuperPacgum { false };
+    bool _hasFinished { false };
 
 };

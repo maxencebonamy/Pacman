@@ -20,11 +20,13 @@ public:
     // Getters
     const std::string& getName() const;
     bool isScary() const;
+    bool isDead() const;
 
     // Public Methods
     void update() override;
     void display(sf::RenderWindow& window) override;
     void scare();
+    void die();
 
 protected:
     // Protected Methods
@@ -35,6 +37,7 @@ protected:
     AnimatedImage _image;
 
     bool _isScary { false };
+    bool _isDead { false };
     float _scareTime { 0 };
     float _scareDuration { 10.f };
 

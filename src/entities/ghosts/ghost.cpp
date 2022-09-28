@@ -20,6 +20,10 @@ bool Ghost::isScary() const {
     return _isScary;
 }
 
+bool Ghost::isDead() const {
+    return _isDead;
+}
+
 
 // Public Methods
 
@@ -46,7 +50,7 @@ void Ghost::update() {
 
         if (_canMoveTo(_nextDirection) && directionToVector(_nextDirection) != -directionToVector(_direction)) {
             _direction = _nextDirection;
-            if (!_isScary) {
+            if (!_isScary && !_isDead) {
                 _updateImage();
             }
         }
@@ -68,6 +72,9 @@ void Ghost::update() {
             _updateImage();
         }
     }
+    if (_isDead) {
+        _image = AnimatedImage("ghosts/eyes/eyes_" + directionToName(_direction), _map->getCellSize() * 2, 1);
+    }
     _image.updateFrame();
 }
 
@@ -80,6 +87,11 @@ void Ghost::scare() {
     _isScary = true;
     _scareTime = 0;
     _image = AnimatedImage("ghosts/scary/scary", _map->getCellSize() * 2);
+}
+
+void Ghost::die() {
+    _isDead = true;
+    _image = AnimatedImage("ghosts/eyes/eyes_" + directionToName(_direction), _map->getCellSize() * 2, 1);
 }
 
 

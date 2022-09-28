@@ -6,8 +6,13 @@
 AnimatedImage::AnimatedImage(const std::string& name, float size, int nbFrames) :
     _nbFrames(nbFrames)
 {
-    for (int i { 1 }; i <= _nbFrames; ++i) {
-        _images.emplace_back(name + '_' + std::to_string(i), size);
+    if (nbFrames == 1) {
+        _images.emplace_back(name, size);
+    }
+    else {
+        for (int i { 1 }; i <= _nbFrames; ++i) {
+            _images.emplace_back(name + '_' + std::to_string(i), size);
+        }
     }
 }
 
