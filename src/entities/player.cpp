@@ -85,13 +85,16 @@ void Player::update() {
 }
 
 void Player::display(sf::RenderWindow& window) {
+    if (_hasFinished) {
+        return;
+    }
     _image.setPosition(_map->getPosition() + _map->getCellSize() * (_position - 0.5*Vector2::one()));
     _image.display(window);
 }
 
 void Player::kill() {
     _isDead = true;
-    _image = AnimatedImage("pacman/death/death", _map->getCellSize() * 2, 12);
+    _image = AnimatedImage("pacman/death/death", _map->getCellSize() * 2, 11);
     _image.disableLoop();
 }
 
